@@ -1,0 +1,17 @@
+# basicamente, esto es lo que necesito para levantar una base de datos postgres localmente en mi equipo
+# en volumes: me va a crear una carpeta que se va a llamar postgres (en desarrollo)
+# TENGO QUE IGNORAR LA CARPETA POSTGRES EN GIT IGNORE
+version: '3'
+# RENGLON A RENGLON, SI O SI USAR TAB
+services:
+  todosDB:
+    image: postgres:15.3
+    container_name: todos-db
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
